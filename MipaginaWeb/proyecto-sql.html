@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto Análisis SQL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="font-family: Arial; padding: 40px; max-width: 900px; margin: auto;">
+
+<h1>Análisis de Ventas E-commerce LATAM</h1>
+
+<h2>Objetivo</h2>
+<p>
+Analizar el comportamiento de ventas por país y categoría,
+identificando clientes de alto valor y métricas clave del negocio.
+</p>
+
+<h2>KPIs Principales</h2>
+<ul>
+  <li>Total Ventas: $1,870</li>
+  <li>Ticket Promedio: $311.67</li>
+  <li>Retención: 50%</li>
+  <li>Electrónica representa 92% del revenue</li>
+</ul>
+
+<h2>Consulta SQL Ejemplo</h2>
+
+<pre>
+SELECT Pais, SUM(Monto) AS Total_Ventas
+FROM Ventas
+GROUP BY Pais;
+</pre>
+
+<h2>Insights</h2>
+<p>
+Nicaragua concentra el 76% del ingreso total.
+El negocio depende fuertemente de la categoría Electrónica.
+Existe una retención del 50% de clientes.
+</p>
+
+<a href="index.html">⬅ Volver al Portafolio</a>
+
+<h2>Ventas por País</h2>
+
+<canvas id="ventasPais" style="max-width:700px;"></canvas>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('ventasPais');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Nicaragua', 'Costa Rica', 'Panamá'],
+    datasets: [{
+      label: 'Ventas por País',
+      data: [1420, 400, 50]
+    }]
+  }
+});
+</script>
+
+</body>
+</html>
+
